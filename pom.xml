@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.fx-world</groupId>	
+	<artifactId>travellingsalesman-rest-client</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	
+	<properties>
+     	<maven.compiler.source>1.8</maven.compiler.source>
+     	<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.openapitools</groupId>
+				<artifactId>openapi-generator-maven-plugin</artifactId>
+				<!-- RELEASE_VERSION -->
+				<version>6.2.1</version>
+				<!-- /RELEASE_VERSION -->
+				<executions>
+					<execution>
+						<id>generate-java</id>
+						<!-- https://openapi-generator.tech/docs/generators/java/ -->
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src/main/resources/api.json</inputSpec>
+							<generatorName>java</generatorName>
+							<output>${project.build.directory}/generated-sources/java</output>
+							<addCompileSourceRoot>false</addCompileSourceRoot>
+							
+							<groupId>de.fx-world</groupId>
+							<artifactId>de.fxworld.travellingsalesman.restclient</artifactId>
+							<artifactVersion>1.0.0</artifactVersion>
+							
+							<configOptions>
+								<invokerPackage>de.fxworld.travellingsalesman</invokerPackage>
+								<apiPackage>de.fxworld.travellingsalesman.api</apiPackage>
+								<modelPackage>de.fxworld.travellingsalesman.model</modelPackage>
+								<artifactDescription>BlaBla</artifactDescription>
+																
+								<!-- <sourceFolder>src/gen/java/main</sourceFolder> -->
+								
+								<developerEmail>fx@fx-world.de</developerEmail>
+								<developerName>Pascal Weyprecht</developerName>
+								<developerOrganization>fx-world Softwareentwicklung</developerOrganization>
+								<developerOrganizationUrl>http://fx-world.de</developerOrganizationUrl>
+								
+								<licenseName>MIT</licenseName>
+								<licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+								
+								<scmUrl>https://github.com/fxworld/openapi-generator</scmUrl>
+								<scmConnection>scm:git:git@github.com:openapitools/openapi-generator.git</scmConnection>
+								<scmDeveloperConnection>scm:git:git@github.com:openapitools/openapi-generator.git</scmDeveloperConnection>
+								
+								<hideGenerationTimestamp>true</hideGenerationTimestamp>
+								<library>jersey2</library>
+							</configOptions>
+							
+							<!-- <configHelp>true</configHelp>  -->
+						</configuration>
+					</execution>
+					
+					<execution>
+						<id>generate-csharp</id>
+						<!-- https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/csharp.md -->
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src/main/resources/api.json</inputSpec>
+							<generatorName>csharp</generatorName>
+							<output>${project.build.directory}/generated-sources/csharp</output>
+							<configOptions>
+								<packageName>De.FxWorld.TravellingSalesman</packageName>
+								<packageVersion>1.0.0</packageVersion>
+								<targetFramework>v4.5.2</targetFramework>
+							</configOptions>
+						</configuration>
+					</execution>
+					
+					<execution>
+						<id>generate-javascript</id>
+						<!-- https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/csharp.md -->
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src/main/resources/api.json</inputSpec>
+							<generatorName>javascript</generatorName>
+							<output>${project.build.directory}/generated-sources/javascript</output>
+							<configOptions>
+								<apiPackage>de.fxworld.travellingsalesman.api</apiPackage>
+								<packageVersion>1.0.0</packageVersion>
+							</configOptions>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>	
+</project>
